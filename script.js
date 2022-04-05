@@ -10,4 +10,11 @@ function playRound(playerChoice, computerChoice) {
     computerChoice = computerChoice.toLowerCase();
 }
 
+function correctCase(inputString) {
+    const lower = inputString.toLowerCase();
+    const firstUpper = inputString[0].toUpperCase();
+    return (firstUpper + lower.slice(1, lower.length));
+}
+
+console.log(correctCase("bArNaClEs"));
 console.log(computerPlay());
