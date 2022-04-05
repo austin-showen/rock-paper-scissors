@@ -6,7 +6,6 @@ function computerPlay() {
 }
 
 function playRound(playerChoice, computerChoice) {
-    playerChoice = correctCase(playerChoice);
     if (playerChoice === computerChoice) {
         return (`It's a tie! Neither ${playerChoice} nor ${computerChoice} wins.`);
     } else if (playerChoice === "Rock") {
@@ -36,7 +35,15 @@ function correctCase(inputString) {
     return (firstUpper + lower.slice(1, lower.length));
 }
 
-console.log(playRound("rOcK", "Paper") + "\nCorrect output: You lose! Paper beats Rock.");
-console.log(playRound("sCIssorS", "Paper") + "\nCorrect output: You win! Scissors beats Paper.")
-console.log(playRound("PAPER", "Paper") + "\nCorrect output: It's a tie! Neither Paper nor Paper wins.");
-console.log(computerPlay());
+function game() {
+    for (i = 0; i < 5; i++) {
+        let playerChoice = correctCase(window.prompt("Do you choose Rock, Paper, or Scissors?"));
+        while (moves.includes(playerChoice) === false) {
+            playerChoice = correctCase(window.prompt("Invalid choice. Try again. Rock, Paper, or Scissors?"));
+        }
+        const computerChoice = computerPlay();
+        console.log(playRound(playerChoice, computerChoice));
+    }
+}
+
+game();
