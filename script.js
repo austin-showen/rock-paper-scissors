@@ -6,26 +6,15 @@ function computerPlay() {
 }
 
 function playRound(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
+    const computerIndex = moves.indexOf(computerChoice);
+    const playerIndex = moves.indexOf(playerChoice);
+    const indexDiff = computerIndex - playerIndex;
+    if (indexDiff === 0) {
         return (`It's a tie! Neither ${playerChoice} nor ${computerChoice} wins.`);
-    } else if (playerChoice === "Rock") {
-        if (computerChoice === "Scissors") {
-            return ("You win! Rock beats Scissors.");
-        } else {
-            return ("You lose! Paper beats Rock.");
-        }
-    } else if (playerChoice === "Paper") {
-        if (computerChoice === "Rock") {
-            return ("You win! Paper beats Rock.");
-        } else {
-            return ("You lose! Scissors beats Paper.");
-        }
-    } else if (playerChoice === "Scissors") { 
-        if (computerChoice === "Paper") {
-            return ("You win! Scissors beats Paper.");
-        } else {
-            return ("You lose! Rock beats Scissors.");
-        }
+    } else if (indexDiff === 1 || indexDiff === -2) {
+        return (`You lose! ${computerChoice} beats ${playerChoice}.`);
+    } else {
+        return (`You win! ${playerChoice} beats ${computerChoice}.`);
     }
 }
 
