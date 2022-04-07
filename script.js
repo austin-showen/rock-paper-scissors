@@ -1,7 +1,6 @@
 const MOVES = ["Rock", "Paper", "Scissors"];
 
 function playRound() {
-    this.classList.add("selected");
     const computerChoice = MOVES[Math.floor(Math.random() * MOVES.length)];
     const playerChoice = this.textContent;
     const computerIndex = MOVES.indexOf(computerChoice);
