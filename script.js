@@ -1,13 +1,12 @@
-const moves = ["Rock", "Paper", "Scissors"];
+const MOVES = ["Rock", "Paper", "Scissors"];
+let playerScore = 0;
+let computerScore = 0;
 
-function computerPlay() {
-    const randomMove = moves[Math.floor(Math.random() * moves.length)];
-    return randomMove;
-}
-
-function playRound(playerChoice, computerChoice) {
-    const computerIndex = moves.indexOf(computerChoice);
-    const playerIndex = moves.indexOf(playerChoice);
+function playRound() {
+    const computerChoice = MOVES[Math.floor(Math.random() * MOVES.length)];
+    const playerChoice = this.textContent;
+    const computerIndex = MOVES.indexOf(computerChoice);
+    const playerIndex = MOVES.indexOf(playerChoice);
     const indexDiff = computerIndex - playerIndex;
     if (indexDiff === 0) {
         return (`It's a tie! Neither ${playerChoice} nor ${computerChoice} wins.`);
@@ -27,7 +26,7 @@ function correctCase(inputString) {
 function game() {
     for (i = 0; i < 5; i++) {
         let playerChoice = correctCase(window.prompt("Do you choose Rock, Paper, or Scissors?"));
-        while (moves.includes(playerChoice) === false) {
+        while (MOVES.includes(playerChoice) === false) {
             playerChoice = correctCase(window.prompt("Invalid choice. Try again. Rock, Paper, or Scissors?"));
         }
         const computerChoice = computerPlay();
@@ -35,4 +34,8 @@ function game() {
     }
 }
 
-game();
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+buttons.forEach(button => button.addEventListener("click", playRound));
+
+//game();
