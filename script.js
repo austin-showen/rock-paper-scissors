@@ -8,12 +8,15 @@ function playRound() {
     const computerIndex = MOVES.indexOf(computerChoice);
     const playerIndex = MOVES.indexOf(playerChoice);
     const indexDiff = computerIndex - playerIndex;
+    moves.textContent = `You chose ${playerChoice}. The computer chose ${computerChoice}.`;
     if (indexDiff === 0) {
-        return (`It's a tie! Neither ${playerChoice} nor ${computerChoice} wins.`);
+        roundResults.textContent = "Nobody gains any points!";
     } else if (indexDiff === 1 || indexDiff === -2) {
-        return (`You lose! ${computerChoice} beats ${playerChoice}.`);
+        computerScore += 1;
+        roundResults.textContent = "You lose! 1 point to the computer!";
     } else {
-        return (`You win! ${playerChoice} beats ${computerChoice}.`);
+        playerScore += 1;
+        roundResults.textContent = "You win! 1 point to the player!";
     }
 }
 
@@ -35,6 +38,9 @@ function game() {
 }
 
 const buttons = document.querySelectorAll("button");
+const moves = document.querySelector(".moves");
+const roundResults = document.querySelector(".round-results");
+const victory = document.querySelector(".victory");
 console.log(buttons);
 buttons.forEach(button => button.addEventListener("click", playRound));
 

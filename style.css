@@ -44,3 +44,15 @@ button {
 .player-score, .computer-score {
     font-size: 120px;
 }
+
+.moves {
+    font-size: 32px;
+}
+
+.round-results {
+    font-size: 32px;
+}
+
+.victory {
+    font-size: 48px;
+}
